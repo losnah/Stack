@@ -1,0 +1,77 @@
+배열로 선형자료구조인 스택 구현해보기
+
+```C++
+#include <cstdio>
+#include <cstdlib>
+using namespace std;
+
+const int arraySize = 20;
+
+class Stack{
+
+	int stackData[arraySize];
+	int top;
+	int displayNum;
+
+public:
+
+	Stack(){
+		top = -1;
+		displayNum = 0;
+	}
+
+
+	//구현목록 : push / pop / isFull / isEmpty / display
+
+	void push(int insertData){
+		if(!isFull()){
+			stackData[++top] = insertData;}
+		else {
+			printf("해당 스택은 꽉 차있습니다.\n");
+		}
+	}
+
+	int pop(){
+		if(!isEmpty()){
+			return stackData[--top]; }
+		else {
+			printf("스택이 비어 반환할 것이 없습니다.\n");
+			return -999;
+		}
+	}
+
+	bool isFull(){
+		if(top == arraySize-1) return true; else return false;
+	}
+
+	bool isEmpty(){
+		if(top == -1) return true; else return false;
+	}
+
+
+	void display(){
+		printf("디스플레이 # 0%d\n",++displayNum);
+		for(int i = 0; i <= top; i++)
+			printf("%d ",stackData[i]);
+
+		printf("\n");
+	}
+};
+
+void main(){
+
+	Stack stack;
+	for(int i = 0; i < 5; i ++){
+		stack.push(i);
+	}
+
+	stack.display();
+
+	stack.pop();stack.pop();stack.pop();stack.pop();stack.pop();stack.pop();
+
+
+	getchar();
+
+
+}
+```
